@@ -83,12 +83,3 @@ function sayHello2(name: string) {
 
   }
 }
-
-// ANCHOR Generic Types
-// return type เดียวกับ argument
-// function toggle<T extends string | number>(a: string | number): string | number {
-function toggle<T extends string | number>(a: T): T {
-  return a;
-}
-
-const result = toggle('hello');
