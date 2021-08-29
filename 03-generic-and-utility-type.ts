@@ -84,4 +84,18 @@ type LuckyNumbersButWithout112 = Exclude<LuckyNumbers, 112>
 // include these from Union
 type BC = Extract<LuckyNumbers, 44 | 50>
 
-  
+
+// ANCHOR optional type
+type CheckType<T> = T extends string
+  ? 'is string'
+  : T extends Number
+    ? 'is number'
+    // : T extends Array<infer Element>
+    // : T extends [infer Head, infer Last]
+    : T extends [infer Head, ...infer Tail]
+      ? 'is array'
+      : 'nope'
+
+type ResultA = CheckType<'hello'>
+type ResultB = CheckType<50>
+type ResultC = CheckType<[50, 30]>
