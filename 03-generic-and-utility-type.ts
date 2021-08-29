@@ -1,6 +1,9 @@
 
 // ANCHOR Generic Types
 // return type เดียวกับ argument
+
+import { isClassStaticBlockDeclaration } from "typescript";
+
 // function toggle<T extends string | number>(a: string | number): string | number {
   function toggle<T extends string | number>(a: T): T {
     return a;
@@ -58,3 +61,27 @@
   };
 
   type ACC = Partial2<Book>
+
+
+  // ANCHOR 3. Readonly
+  type ACC2 = Readonly<Book>
+
+  type Readonly2<T> = {
+    readonly [P in keyof T]: T[P];
+  }
+
+  // ANCHOR 4. Pick
+type PartialBook = Pick<Book, 'id'>
+
+
+// ANCHOR 5. Exclude
+// remove from  Union
+type LuckyNumbers = 44 | 112 | 50
+type LuckyNumbersButWithout112 = Exclude<LuckyNumbers, 112>
+
+
+// ANCHOR 6. Extract
+// include these from Union
+type BC = Extract<LuckyNumbers, 44 | 50>
+
+  
