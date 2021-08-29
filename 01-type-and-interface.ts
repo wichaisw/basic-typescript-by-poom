@@ -37,6 +37,7 @@ function add2(): void {
 }
 
 // ANCHOR never: to communicate that this function will not return
+// function which will not return to its end point or always throws an exception.
 function add3(): never {
   while(true) {};
 }
